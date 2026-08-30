@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Employee</title>
+    
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/employees/">Employee Management System </a>
+
+        <div>
+            <a class="btn btn-light me-2" href="/employees/">Employee List</a>
+            <a class="btn btn-success me-2" href="/employees/add/">Add Employee</a>
+            <a class="btn btn-info" href="/employees/dashboard/">Dashboard</a>
+        </div>
+    </div>
+</nav>
+<div class="container mt-4">
+    <h1>Add Employee</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+</div>
+
+    <br>
+    <a href="/employees/">Back to Employee List</a>
+</body>
+</html>
+messages.success(request, "Employee added successfully!")

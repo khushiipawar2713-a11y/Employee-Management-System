@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Employee</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/employees/">Employee Management System</a>
+
+        <div>
+            <a class="btn btn-light me-2" href="/employees/">Employee List</a>
+            <a class="btn btn-success me-2" href="/employees/add/">Add Employee</a>
+            <a class="btn btn-info" href="/employees/dashboard/">Dashboard</a>
+        </div>
+    </div>
+</nav>
+    <h1>Update Employee</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update</button>
+    </form>
+
+    <a href="/employees/">Back</a>
+</body>
+</html>

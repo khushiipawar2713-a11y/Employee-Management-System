@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="text-center mb-4">
+
+{% if employee.photo %}
+
+<img src="{{ employee.photo.url }}"
+     width="180"
+     height="180"
+     class="rounded-circle shadow">
+
+{% else %}
+
+<i class="fa-solid fa-user fa-5x"></i>
+
+{% endif %}
+
+</div>
+
+            <div class="container mt-4">
+
+<div class="card shadow">
+
+<div class="card-body text-center">
+
+
+{% if employee.photo %}
+
+<img src="{{ employee.photo.url }}"
+class="rounded-circle mb-3"
+width="180"
+height="180">
+
+{% endif %}
+
+
+<h2 class="fw-bold">
+{{ employee.name }}
+</h2>
+
+
+<p>
+<i class="fa-solid fa-envelope"></i>
+{{ employee.email }}
+</p>
+
+
+<p>
+<i class="fa-solid fa-phone"></i>
+{{ employee.phone }}
+</p>
+
+
+<p>
+<i class="fa-solid fa-building"></i>
+{{ employee.department }}
+</p>
+
+
+<p>
+<i class="fa-solid fa-money-bill"></i>
+₹ {{ employee.salary }}
+</p>
+
+
+<p>
+<i class="fa-solid fa-calendar"></i>
+{{ employee.joining_date }}
+</p>
+
+
+</div>
+
+</div>
+
+</div>
+
+            <a href="{% url 'employee_list' %}" class="btn btn-secondary">
+                Back
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
