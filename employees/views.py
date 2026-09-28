@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.db.models import Max, Min
 from django.core.paginator import Paginator
 from django.http import HttpResponse
+from django.contrib.auth.models import User
 
 import openpyxl
 
@@ -249,3 +250,21 @@ def employee_pdf(request):
     pdf.save()
 
     return response
+
+def reset_user_password(request):
+    if request.method == "POST":
+        username = request.POST.get("username")
+        new_password = request.POST.get("new_password")
+
+        try:
+            user = User.objects.get(username=username)
+            user.set_password(new_password)
+            user.save()
+
+            messages.success(request, "Password reset successfully!")
+            return redirect("login")
+
+        except User.DoesNotExist:
+            messages.error(request, "User not found.")
+
+    return render(request, "employees/reset_password.html")
